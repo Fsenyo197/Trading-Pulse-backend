@@ -8,17 +8,17 @@ def import_economic_data_from_csv(file_path):
         for row in csv_reader:
             currency = row['Currency']
             impact_level = row['Impact']
-            
+
             # Parse date and time separately
             release_date_str = row['Date']
             release_time_str = row['Time']
-            
+
             # Parse date
             release_date = datetime.strptime(release_date_str, '%m/%d/%Y').date()
-            
+
             # Parse time without seconds
             release_time = datetime.strptime(release_time_str, '%H:%M').time()
-            
+
             event_name = row['Events']
             previous = row['Previous']
             forecast = row['Forecast']
