@@ -1,0 +1,10 @@
+asgiref==3.7.2
+Django==5.0.3
+django-cors-headers==4.3.1
+django-filter==24.1
+django-markdown==0.8.4
+djangorestframework==3.15.0
+Markdown==3.6
+mysqlclient==2.2.4
+sqlparse==0.4.4
+typing_extensions==4.10.0
