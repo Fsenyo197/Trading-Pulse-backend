@@ -40,4 +40,3 @@ class EconomicEventView(APIView):
         # Serialize and return the filtered events
         serializer = EconomicEventSerializer(events, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-

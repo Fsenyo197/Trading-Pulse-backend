@@ -76,7 +76,7 @@ class EconomicEvent(models.Model):
                     if forecast_value < actual_value:
                         self.outcome = 'negative'
                     elif forecast_value > actual_value:
-                        self.outcome = 'positive' 
+                        self.outcome = 'positive'
                     else:
                         self.outcome = 'neutral'
             else:
@@ -97,8 +97,6 @@ class EconomicEvent(models.Model):
 
         super().save(*args, **kwargs)
 
-
-
     def convert_to_float(self, value):
         """
         Convert a string value to float, handling 'K', 'M', 'B', and 'T' suffixes,
@@ -114,7 +112,6 @@ class EconomicEvent(models.Model):
             return float(value)
         except ValueError:
             return None
-
 
     def __str__(self):
         """
