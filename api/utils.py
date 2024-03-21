@@ -1,6 +1,14 @@
+import os
+import django
 import csv
-from datetime import datetime
+
+# Set the Django settings module
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+django.setup()
+
+# Now you can import your models
 from .models import EconomicEvent
+from datetime import datetime
 
 def import_economic_data_from_csv(file_path):
     with open(file_path, 'r') as csv_file:
@@ -19,7 +27,7 @@ def import_economic_data_from_csv(file_path):
             # Parse time without seconds
             release_time = datetime.strptime(release_time_str, '%H:%M').time()
 
-            event_name = row['Events']
+            event_name = row['Event']
             previous = row['Previous']
             forecast = row['Forecast']
             actual = row['Actual']
