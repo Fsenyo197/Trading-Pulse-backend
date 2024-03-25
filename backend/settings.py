@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t3%r#*+(*(2%$j^jt$23(36t&gw=po*f7nli=6*1hw^osx8&x5
 DEBUG = False
 
 # Specify domain name. '*' because of development
-ALLOWED_HOSTS = ['trading-pulse-backend-dev-hmex.2.sg-1.fl0.io']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -71,11 +71,13 @@ CORS_ALLOWED_ORIGINS = [
     #'http://127.0.0.1:3030',
     #'yoursite.com'
 ]
-'''
 
 CORS_ALLOWED_ORIGINS = [
     'https://trading-pulse.vercel.app',
 ]
+'''
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'backend.urls'
 
