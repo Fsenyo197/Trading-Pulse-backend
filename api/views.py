@@ -24,18 +24,21 @@ class EconomicEventView(APIView):
         start_date = datetime.strptime(start_date_str, '%Y-%m-%d') if start_date_str else None
         end_date = datetime.strptime(end_date_str, '%Y-%m-%d') if end_date_str else None
 
-        # Filter events based on provided parameters
-        events = EconomicEvent.objects.filter(
-            currency=currency,
-            impact_level=impact_level,
-            outcome__in=['positive', 'negative', 'neutral']
-        )
+        # Initial filter: Only include events with the specified outcome
+        events = EconomicEvent.objects.filter(outcome__in=['positive', 'negative', 'neutral'])
 
-        # Apply additional filtering for date range
+        # Apply additional filters if parameters are provided
+        if currency:
+            events = events.filter(currency=currency)
+        if impact_level:
+            events = events.filter(impact_level=impact_level)
         if start_date:
             events = events.filter(release_date__gte=start_date)
         if end_date:
             events = events.filter(release_date__lte=end_date)
+
+        # Debugging: Print the filtered results to the console
+        print(f"Filtered Events: {events}")
 
         # Serialize and return the filtered events
         serializer = EconomicEventSerializer(events, many=True)
